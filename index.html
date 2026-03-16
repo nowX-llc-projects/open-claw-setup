@@ -430,6 +430,10 @@
       align-items: start;
     }
 
+    .pricing-grid.four-col {
+      grid-template-columns: repeat(4, 1fr);
+    }
+
     .pricing-card {
       background: var(--primary);
       border: 1px solid var(--border);
@@ -967,6 +971,7 @@
 
       .solution-grid,
       .pricing-grid,
+      .pricing-grid.four-col,
       .flow-steps {
         grid-template-columns: 1fr;
       }
@@ -1107,7 +1112,7 @@
         用途と予算に合わせて3つのプランをご用意。<br>
         すべてPC本体 + セットアップ費用込みの価格です。
       </p>
-      <div class="pricing-grid">
+      <div class="pricing-grid four-col">
 
         <!-- LIGHT -->
         <div class="pricing-card">
@@ -1187,6 +1192,31 @@
             <li><span class="check">&#x2713;</span>優先サポート（90日間）</li>
           </ul>
           <a href="#register" class="pricing-btn pricing-btn-secondary">事前登録する</a>
+        </div>
+
+        <!-- CUSTOM -->
+        <div class="pricing-card">
+          <div class="pricing-name">Custom</div>
+          <div class="pricing-title">カスタムプラン</div>
+          <div class="pricing-desc">お好みのPCにOpenClawをセットアップ。お持ちのPCや指定機種に対応します。</div>
+          <div class="pricing-price">
+            <span class="pricing-amount" style="font-size:2rem;">個別お見積もり</span>
+          </div>
+          <div class="pricing-tax">ヒアリング後にご提案</div>
+          <div class="pricing-spec">
+            <div class="pricing-spec-title">対応範囲</div>
+            <div class="pricing-spec-item"><span>対象PC</span><span>ご指定の機種</span></div>
+            <div class="pricing-spec-item"><span>OS</span><span>ご要望に応じて</span></div>
+            <div class="pricing-spec-item"><span>AIモデル</span><span>スペックに最適化</span></div>
+          </div>
+          <ul class="pricing-features">
+            <li><span class="check">&#x2713;</span>お手持ち・ご指定PCにセットアップ</li>
+            <li><span class="check">&#x2713;</span>PC選定からご相談可能</li>
+            <li><span class="check">&#x2713;</span>法人向けカスタム構成に対応</li>
+            <li><span class="check">&#x2713;</span>複数台の一括セットアップ対応</li>
+            <li><span class="check">&#x2713;</span>優先サポート（90日間）</li>
+          </ul>
+          <a href="#register" class="pricing-btn pricing-btn-secondary">相談する</a>
         </div>
 
       </div>
@@ -1331,6 +1361,7 @@
             <option value="light">ライトプラン（&yen;168,000〜）</option>
             <option value="standard">スタンダードプラン（&yen;348,000〜）</option>
             <option value="premium">プレミアムプラン（&yen;548,000〜）</option>
+            <option value="custom">カスタムプラン（個別見積もり）</option>
             <option value="undecided">まだ決めていない</option>
           </select>
           <button type="submit" class="form-submit">事前登録する（無料）</button>
