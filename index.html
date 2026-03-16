@@ -1,0 +1,1410 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>START AI｜AIパソコン セットアップ済みで届く</title>
+  <meta name="description" content="OpenClaw搭載AIパソコンをセットアップ済みでお届け。箱を開けたらすぐにAIが使える。中小企業のAI導入を最短で実現します。">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #0A0F1C;
+      --accent: #3B82F6;
+      --accent-light: #60A5FA;
+      --accent-glow: rgba(59, 130, 246, 0.15);
+      --gradient-start: #3B82F6;
+      --gradient-end: #8B5CF6;
+      --surface: #111827;
+      --surface-light: #1F2937;
+      --text: #F9FAFB;
+      --text-muted: #9CA3AF;
+      --text-dim: #6B7280;
+      --border: #374151;
+      --success: #10B981;
+      --warning: #F59E0B;
+      --danger: #EF4444;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    html {
+      scroll-behavior: smooth;
+      font-size: 16px;
+    }
+
+    body {
+      font-family: 'Noto Sans JP', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: var(--primary);
+      color: var(--text);
+      line-height: 1.8;
+      overflow-x: hidden;
+    }
+
+    /* ========== HEADER ========== */
+    .header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      background: rgba(10, 15, 28, 0.85);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(55, 65, 81, 0.5);
+      transition: all 0.3s ease;
+    }
+
+    .header-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0.75rem 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      text-decoration: none;
+    }
+
+    .logo-icon {
+      width: 36px;
+      height: 36px;
+      background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+    }
+
+    .logo-text {
+      font-family: 'Inter', sans-serif;
+      font-size: 1.25rem;
+      font-weight: 800;
+      color: var(--text);
+      letter-spacing: -0.02em;
+    }
+
+    .logo-text span {
+      background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .header-nav {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+    }
+
+    .header-nav a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 0.875rem;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+
+    .header-nav a:hover { color: var(--text); }
+
+    .header-cta {
+      background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
+      color: #fff !important;
+      padding: 0.5rem 1.25rem;
+      border-radius: 8px;
+      font-weight: 600 !important;
+      transition: opacity 0.2s !important;
+    }
+
+    .header-cta:hover { opacity: 0.9; }
+
+    /* ========== HERO ========== */
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 8rem 2rem 4rem;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -20%;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 800px;
+      height: 800px;
+      background: radial-gradient(circle, rgba(59, 130, 246, 0.12) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .hero::after {
+      content: '';
+      position: absolute;
+      top: 10%;
+      right: -10%;
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(139, 92, 246, 0.08) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .hero-content {
+      max-width: 900px;
+      text-align: center;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: var(--accent-glow);
+      border: 1px solid rgba(59, 130, 246, 0.3);
+      padding: 0.4rem 1rem;
+      border-radius: 100px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--accent-light);
+      margin-bottom: 2rem;
+      letter-spacing: 0.05em;
+    }
+
+    .hero-badge::before {
+      content: '';
+      width: 8px;
+      height: 8px;
+      background: var(--success);
+      border-radius: 50%;
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.4; }
+    }
+
+    .hero h1 {
+      font-size: clamp(2.5rem, 6vw, 4.5rem);
+      font-weight: 900;
+      line-height: 1.2;
+      letter-spacing: -0.03em;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero h1 .gradient {
+      background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero-sub {
+      font-size: clamp(1rem, 2vw, 1.25rem);
+      color: var(--text-muted);
+      max-width: 640px;
+      margin: 0 auto 2.5rem;
+      line-height: 1.9;
+    }
+
+    .hero-cta-group {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
+      color: #fff;
+      padding: 1rem 2rem;
+      border-radius: 12px;
+      font-size: 1rem;
+      font-weight: 700;
+      text-decoration: none;
+      border: none;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 24px rgba(59, 130, 246, 0.3);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 32px rgba(59, 130, 246, 0.4);
+    }
+
+    .btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: transparent;
+      color: var(--text);
+      padding: 1rem 2rem;
+      border-radius: 12px;
+      font-size: 1rem;
+      font-weight: 600;
+      text-decoration: none;
+      border: 1px solid var(--border);
+      transition: all 0.2s;
+    }
+
+    .btn-secondary:hover {
+      background: var(--surface-light);
+      border-color: var(--text-dim);
+    }
+
+    .hero-stats {
+      display: flex;
+      justify-content: center;
+      gap: 3rem;
+      margin-top: 4rem;
+      padding-top: 2rem;
+      border-top: 1px solid var(--border);
+    }
+
+    .hero-stat {
+      text-align: center;
+    }
+
+    .hero-stat-number {
+      font-family: 'Inter', sans-serif;
+      font-size: 2rem;
+      font-weight: 800;
+      background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero-stat-label {
+      font-size: 0.8rem;
+      color: var(--text-dim);
+      margin-top: 0.25rem;
+    }
+
+    /* ========== SECTIONS ========== */
+    section {
+      padding: 6rem 2rem;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .section-label {
+      display: inline-block;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: var(--accent);
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      margin-bottom: 0.75rem;
+    }
+
+    .section-title {
+      font-size: clamp(1.75rem, 4vw, 2.75rem);
+      font-weight: 900;
+      letter-spacing: -0.02em;
+      line-height: 1.3;
+      margin-bottom: 1rem;
+    }
+
+    .section-desc {
+      color: var(--text-muted);
+      font-size: 1.05rem;
+      max-width: 640px;
+      line-height: 1.9;
+    }
+
+    /* ========== PROBLEM ========== */
+    .problem {
+      background: var(--surface);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .problem-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+      margin-top: 3rem;
+    }
+
+    .problem-card {
+      background: var(--primary);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 2rem;
+      transition: border-color 0.3s;
+    }
+
+    .problem-card:hover {
+      border-color: var(--danger);
+    }
+
+    .problem-icon {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+    }
+
+    .problem-card h3 {
+      font-size: 1.1rem;
+      font-weight: 700;
+      margin-bottom: 0.75rem;
+    }
+
+    .problem-card p {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      line-height: 1.7;
+    }
+
+    /* ========== SOLUTION ========== */
+    .solution-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      margin-top: 3rem;
+    }
+
+    .solution-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 2.5rem 2rem;
+      text-align: center;
+      transition: all 0.3s ease;
+    }
+
+    .solution-card:hover {
+      border-color: var(--accent);
+      transform: translateY(-4px);
+    }
+
+    .solution-number {
+      font-family: 'Inter', sans-serif;
+      font-size: 3rem;
+      font-weight: 800;
+      background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      line-height: 1;
+      margin-bottom: 1rem;
+    }
+
+    .solution-card h3 {
+      font-size: 1.15rem;
+      font-weight: 700;
+      margin-bottom: 0.75rem;
+    }
+
+    .solution-card p {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      line-height: 1.7;
+    }
+
+    /* ========== PRICING ========== */
+    .pricing {
+      background: var(--surface);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      margin-top: 3rem;
+      align-items: start;
+    }
+
+    .pricing-card {
+      background: var(--primary);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 2.5rem 2rem;
+      position: relative;
+      transition: all 0.3s ease;
+    }
+
+    .pricing-card:hover {
+      border-color: var(--accent);
+    }
+
+    .pricing-card.featured {
+      border-color: var(--accent);
+      box-shadow: 0 0 60px rgba(59, 130, 246, 0.1);
+      transform: scale(1.03);
+    }
+
+    .pricing-popular {
+      position: absolute;
+      top: -12px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
+      color: #fff;
+      padding: 0.3rem 1.25rem;
+      border-radius: 100px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    .pricing-name {
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 0.5rem;
+    }
+
+    .pricing-title {
+      font-size: 1.3rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+    }
+
+    .pricing-desc {
+      color: var(--text-muted);
+      font-size: 0.85rem;
+      margin-bottom: 1.5rem;
+      line-height: 1.6;
+    }
+
+    .pricing-price {
+      display: flex;
+      align-items: baseline;
+      gap: 0.25rem;
+      margin-bottom: 0.25rem;
+    }
+
+    .pricing-yen {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--text-muted);
+    }
+
+    .pricing-amount {
+      font-family: 'Inter', sans-serif;
+      font-size: 2.75rem;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+    }
+
+    .pricing-tax {
+      font-size: 0.75rem;
+      color: var(--text-dim);
+      margin-bottom: 2rem;
+    }
+
+    .pricing-features {
+      list-style: none;
+      margin-bottom: 2rem;
+    }
+
+    .pricing-features li {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+      padding: 0.5rem 0;
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      border-bottom: 1px solid rgba(55, 65, 81, 0.3);
+    }
+
+    .pricing-features li:last-child { border-bottom: none; }
+
+    .pricing-features .check {
+      color: var(--success);
+      font-weight: 700;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    .pricing-spec {
+      background: var(--surface);
+      border-radius: 12px;
+      padding: 1.25rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .pricing-spec-title {
+      font-size: 0.7rem;
+      font-weight: 700;
+      color: var(--text-dim);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 0.75rem;
+    }
+
+    .pricing-spec-item {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.8rem;
+      padding: 0.25rem 0;
+    }
+
+    .pricing-spec-item span:first-child {
+      color: var(--text-dim);
+    }
+
+    .pricing-spec-item span:last-child {
+      color: var(--text);
+      font-weight: 600;
+    }
+
+    .pricing-btn {
+      display: block;
+      text-align: center;
+      padding: 0.875rem;
+      border-radius: 12px;
+      font-weight: 700;
+      font-size: 0.9rem;
+      text-decoration: none;
+      transition: all 0.2s;
+    }
+
+    .pricing-btn-primary {
+      background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
+      color: #fff;
+      box-shadow: 0 4px 16px rgba(59, 130, 246, 0.3);
+    }
+
+    .pricing-btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 24px rgba(59, 130, 246, 0.4);
+    }
+
+    .pricing-btn-secondary {
+      background: transparent;
+      color: var(--text);
+      border: 1px solid var(--border);
+    }
+
+    .pricing-btn-secondary:hover {
+      background: var(--surface-light);
+    }
+
+    /* ========== HOW IT WORKS ========== */
+    .flow-steps {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.5rem;
+      margin-top: 3rem;
+    }
+
+    .flow-step {
+      position: relative;
+      text-align: center;
+    }
+
+    .flow-step::after {
+      content: '';
+      position: absolute;
+      top: 2rem;
+      right: -0.75rem;
+      width: calc(100%);
+      height: 2px;
+      background: linear-gradient(90deg, var(--accent), transparent);
+      z-index: 0;
+    }
+
+    .flow-step:last-child::after { display: none; }
+
+    .flow-step-num {
+      width: 56px;
+      height: 56px;
+      background: var(--surface);
+      border: 2px solid var(--accent);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 1.25rem;
+      font-family: 'Inter', sans-serif;
+      font-size: 1.25rem;
+      font-weight: 800;
+      color: var(--accent);
+      position: relative;
+      z-index: 1;
+    }
+
+    .flow-step h3 {
+      font-size: 1rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+    }
+
+    .flow-step p {
+      color: var(--text-muted);
+      font-size: 0.85rem;
+      line-height: 1.6;
+    }
+
+    /* ========== USE CASES ========== */
+    .usecases-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.5rem;
+      margin-top: 3rem;
+    }
+
+    .usecase-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 2rem;
+      transition: border-color 0.3s;
+    }
+
+    .usecase-card:hover {
+      border-color: var(--accent);
+    }
+
+    .usecase-persona {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin-bottom: 1rem;
+    }
+
+    .usecase-avatar {
+      width: 44px;
+      height: 44px;
+      background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.25rem;
+    }
+
+    .usecase-role {
+      font-size: 0.8rem;
+      color: var(--text-dim);
+    }
+
+    .usecase-name {
+      font-size: 0.95rem;
+      font-weight: 700;
+    }
+
+    .usecase-card blockquote {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      line-height: 1.8;
+      font-style: italic;
+      border-left: 3px solid var(--accent);
+      padding-left: 1rem;
+    }
+
+    /* ========== FAQ ========== */
+    .faq {
+      background: var(--surface);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .faq-list {
+      max-width: 800px;
+      margin: 3rem auto 0;
+    }
+
+    .faq-item {
+      border-bottom: 1px solid var(--border);
+    }
+
+    .faq-question {
+      width: 100%;
+      background: none;
+      border: none;
+      color: var(--text);
+      font-size: 1rem;
+      font-weight: 600;
+      text-align: left;
+      padding: 1.5rem 0;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-family: inherit;
+      line-height: 1.6;
+    }
+
+    .faq-question::after {
+      content: '+';
+      font-family: 'Inter', sans-serif;
+      font-size: 1.5rem;
+      font-weight: 300;
+      color: var(--text-dim);
+      transition: transform 0.3s;
+      flex-shrink: 0;
+      margin-left: 1rem;
+    }
+
+    .faq-item.active .faq-question::after {
+      transform: rotate(45deg);
+    }
+
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s ease, padding 0.4s ease;
+    }
+
+    .faq-item.active .faq-answer {
+      max-height: 300px;
+      padding-bottom: 1.5rem;
+    }
+
+    .faq-answer p {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      line-height: 1.8;
+    }
+
+    /* ========== CTA / REGISTER ========== */
+    .register {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .register::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 800px;
+      height: 400px;
+      background: radial-gradient(ellipse, rgba(59, 130, 246, 0.1) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .register-box {
+      max-width: 640px;
+      margin: 0 auto;
+      text-align: center;
+      position: relative;
+      z-index: 1;
+    }
+
+    .register-box h2 {
+      font-size: clamp(1.75rem, 4vw, 2.5rem);
+      font-weight: 900;
+      margin-bottom: 1rem;
+      letter-spacing: -0.02em;
+    }
+
+    .register-box p {
+      color: var(--text-muted);
+      margin-bottom: 2rem;
+      font-size: 1rem;
+      line-height: 1.8;
+    }
+
+    .register-form {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      max-width: 480px;
+      margin: 0 auto;
+    }
+
+    .form-row {
+      display: flex;
+      gap: 0.75rem;
+    }
+
+    .form-input {
+      flex: 1;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 0.875rem 1.25rem;
+      color: var(--text);
+      font-size: 0.95rem;
+      font-family: inherit;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+
+    .form-input:focus {
+      border-color: var(--accent);
+    }
+
+    .form-input::placeholder {
+      color: var(--text-dim);
+    }
+
+    .form-select {
+      flex: 1;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 0.875rem 1.25rem;
+      color: var(--text);
+      font-size: 0.95rem;
+      font-family: inherit;
+      outline: none;
+      cursor: pointer;
+      appearance: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%236B7280' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 1rem center;
+    }
+
+    .form-select:focus {
+      border-color: var(--accent);
+    }
+
+    .form-submit {
+      background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
+      color: #fff;
+      border: none;
+      border-radius: 12px;
+      padding: 1rem;
+      font-size: 1rem;
+      font-weight: 700;
+      font-family: inherit;
+      cursor: pointer;
+      transition: all 0.3s;
+      box-shadow: 0 4px 24px rgba(59, 130, 246, 0.3);
+    }
+
+    .form-submit:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 32px rgba(59, 130, 246, 0.4);
+    }
+
+    .form-note {
+      font-size: 0.75rem;
+      color: var(--text-dim);
+      margin-top: 0.5rem;
+    }
+
+    .form-success {
+      display: none;
+      background: rgba(16, 185, 129, 0.1);
+      border: 1px solid rgba(16, 185, 129, 0.3);
+      border-radius: 12px;
+      padding: 1.5rem;
+      text-align: center;
+    }
+
+    .form-success h3 {
+      color: var(--success);
+      font-size: 1.1rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .form-success p {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      margin-bottom: 0;
+    }
+
+    /* ========== FOOTER ========== */
+    .footer {
+      background: var(--surface);
+      border-top: 1px solid var(--border);
+      padding: 3rem 2rem;
+    }
+
+    .footer-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .footer-copy {
+      font-size: 0.8rem;
+      color: var(--text-dim);
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 1.5rem;
+    }
+
+    .footer-links a {
+      color: var(--text-dim);
+      text-decoration: none;
+      font-size: 0.8rem;
+      transition: color 0.2s;
+    }
+
+    .footer-links a:hover { color: var(--text); }
+
+    /* ========== RESPONSIVE ========== */
+    @media (max-width: 768px) {
+      .header-nav { display: none; }
+
+      .hero { padding: 7rem 1.25rem 3rem; }
+
+      .hero-stats {
+        flex-direction: column;
+        gap: 1.5rem;
+      }
+
+      section { padding: 4rem 1.25rem; }
+
+      .solution-grid,
+      .pricing-grid,
+      .flow-steps {
+        grid-template-columns: 1fr;
+      }
+
+      .pricing-card.featured {
+        transform: none;
+      }
+
+      .flow-step::after { display: none; }
+
+      .form-row { flex-direction: column; }
+
+      .footer-inner {
+        flex-direction: column;
+        gap: 1rem;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header class="header">
+    <div class="header-inner">
+      <a href="#" class="logo">
+        <div class="logo-icon">AI</div>
+        <div class="logo-text">START <span>AI</span></div>
+      </a>
+      <nav class="header-nav">
+        <a href="#problem">課題</a>
+        <a href="#solution">サービス</a>
+        <a href="#pricing">料金</a>
+        <a href="#flow">ご利用の流れ</a>
+        <a href="#faq">FAQ</a>
+        <a href="#register" class="header-cta">事前登録する</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-content">
+      <div class="hero-badge">事前登録受付中</div>
+      <h1>
+        AIパソコン、<br>
+        <span class="gradient">届いたらすぐ使える。</span>
+      </h1>
+      <p class="hero-sub">
+        OpenClaw搭載のAI専用パソコンを、セットアップ完了済みでお届け。<br>
+        面倒な初期設定は一切不要。箱を開けた瞬間からAIが動きます。
+      </p>
+      <div class="hero-cta-group">
+        <a href="#register" class="btn-primary">事前登録する（無料）</a>
+        <a href="#pricing" class="btn-secondary">料金プランを見る</a>
+      </div>
+      <div class="hero-stats">
+        <div class="hero-stat">
+          <div class="hero-stat-number">0分</div>
+          <div class="hero-stat-label">セットアップ時間</div>
+        </div>
+        <div class="hero-stat">
+          <div class="hero-stat-number">120B</div>
+          <div class="hero-stat-label">最大対応AIモデル</div>
+        </div>
+        <div class="hero-stat">
+          <div class="hero-stat-number">52t/s</div>
+          <div class="hero-stat-label">ローカル推論速度</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROBLEM -->
+  <section class="problem" id="problem">
+    <div class="container">
+      <span class="section-label">Problem</span>
+      <h2 class="section-title">AIを使いたい。でも、始められない。</h2>
+      <p class="section-desc">
+        AI導入に興味はあるけれど、実際にやろうとすると壁だらけ。<br>
+        中小企業のAI活用が進まない理由は、技術ではなく「始め方」にあります。
+      </p>
+      <div class="problem-grid">
+        <div class="problem-card">
+          <div class="problem-icon">&#x1F6AB;</div>
+          <h3>セットアップが難しすぎる</h3>
+          <p>Ubuntuのインストール、ドライバ設定、LLMの導入... 専門知識がないと何日もかかり、途中で挫折する人が大半です。</p>
+        </div>
+        <div class="problem-card">
+          <div class="problem-icon">&#x1F4B8;</div>
+          <h3>誰に頼めばいいかわからない</h3>
+          <p>AI専用PCのセットアップを請け負える業者はほとんど存在しません。一般的なPC設定業者ではAI環境の構築は対応不可です。</p>
+        </div>
+        <div class="problem-card">
+          <div class="problem-icon">&#x23F3;</div>
+          <h3>情報が多すぎて選べない</h3>
+          <p>どのPCを買えばいいのか、どのAIモデルを使えばいいのか。情報過多で意思決定できず、「いつかやろう」のまま時間だけが過ぎていきます。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SOLUTION -->
+  <section id="solution">
+    <div class="container">
+      <span class="section-label">Solution</span>
+      <h2 class="section-title">START AIなら、全部おまかせ。</h2>
+      <p class="section-desc">
+        PC選定からAI環境の構築まで、すべてプロが対応。<br>
+        届いたその日から、社内でAIが使えます。
+      </p>
+      <div class="solution-grid">
+        <div class="solution-card">
+          <div class="solution-number">01</div>
+          <h3>最適なPCを選定</h3>
+          <p>ご利用目的に合わせて、AIに最適化されたミニPCを厳選。無駄のないスペックで、コストを最小限に。</p>
+        </div>
+        <div class="solution-card">
+          <div class="solution-number">02</div>
+          <h3>プロがセットアップ</h3>
+          <p>OpenClaw・OS・AIモデル・ネットワーク設定をすべて完了した状態でお届け。動作確認済みです。</p>
+        </div>
+        <div class="solution-card">
+          <div class="solution-number">03</div>
+          <h3>届いたら電源ONだけ</h3>
+          <p>箱を開けて電源を入れるだけ。難しい操作は一切不要。すぐにAIエージェントが使い始められます。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRICING -->
+  <section class="pricing" id="pricing">
+    <div class="container">
+      <span class="section-label">Pricing</span>
+      <h2 class="section-title">プランと料金</h2>
+      <p class="section-desc">
+        用途と予算に合わせて3つのプランをご用意。<br>
+        すべてPC本体 + セットアップ費用込みの価格です。
+      </p>
+      <div class="pricing-grid">
+
+        <!-- LIGHT -->
+        <div class="pricing-card">
+          <div class="pricing-name">Light</div>
+          <div class="pricing-title">ライトプラン</div>
+          <div class="pricing-desc">クラウドAPI接続型。手軽にAIを試したい方に。</div>
+          <div class="pricing-price">
+            <span class="pricing-yen">&yen;</span>
+            <span class="pricing-amount">168,000</span>
+          </div>
+          <div class="pricing-tax">税込 &yen;184,800</div>
+          <div class="pricing-spec">
+            <div class="pricing-spec-title">PC スペック</div>
+            <div class="pricing-spec-item"><span>CPU</span><span>Ryzen 7 8845HS</span></div>
+            <div class="pricing-spec-item"><span>メモリ</span><span>32GB DDR5</span></div>
+            <div class="pricing-spec-item"><span>ストレージ</span><span>500GB NVMe SSD</span></div>
+          </div>
+          <ul class="pricing-features">
+            <li><span class="check">&#x2713;</span>OpenClaw セットアップ済み</li>
+            <li><span class="check">&#x2713;</span>クラウドAPI接続設定</li>
+            <li><span class="check">&#x2713;</span>Ubuntu + Windows デュアルブート</li>
+            <li><span class="check">&#x2713;</span>基本操作マニュアル付属</li>
+            <li><span class="check">&#x2713;</span>メールサポート（30日間）</li>
+          </ul>
+          <a href="#register" class="pricing-btn pricing-btn-secondary">事前登録する</a>
+        </div>
+
+        <!-- STANDARD -->
+        <div class="pricing-card featured">
+          <div class="pricing-popular">一番人気</div>
+          <div class="pricing-name">Standard</div>
+          <div class="pricing-title">スタンダードプラン</div>
+          <div class="pricing-desc">ローカルLLM対応。ネット不要でAIが動く。</div>
+          <div class="pricing-price">
+            <span class="pricing-yen">&yen;</span>
+            <span class="pricing-amount">348,000</span>
+          </div>
+          <div class="pricing-tax">税込 &yen;382,800</div>
+          <div class="pricing-spec">
+            <div class="pricing-spec-title">PC スペック</div>
+            <div class="pricing-spec-item"><span>CPU</span><span>AMD AI Max+ 395</span></div>
+            <div class="pricing-spec-item"><span>統合メモリ</span><span>64GB LPDDR5X</span></div>
+            <div class="pricing-spec-item"><span>ストレージ</span><span>1TB NVMe SSD</span></div>
+          </div>
+          <ul class="pricing-features">
+            <li><span class="check">&#x2713;</span>ライトプランの全機能</li>
+            <li><span class="check">&#x2713;</span>ローカルLLM導入済み（~70Bモデル対応）</li>
+            <li><span class="check">&#x2713;</span>オフラインでAI推論が可能</li>
+            <li><span class="check">&#x2713;</span>社外秘データも安心して処理</li>
+            <li><span class="check">&#x2713;</span>オンラインサポート（60日間）</li>
+          </ul>
+          <a href="#register" class="pricing-btn pricing-btn-primary">事前登録する</a>
+        </div>
+
+        <!-- PREMIUM -->
+        <div class="pricing-card">
+          <div class="pricing-name">Premium</div>
+          <div class="pricing-title">プレミアムプラン</div>
+          <div class="pricing-desc">GPT-OSS 120B対応。最高性能のAI環境を。</div>
+          <div class="pricing-price">
+            <span class="pricing-yen">&yen;</span>
+            <span class="pricing-amount">548,000</span>
+          </div>
+          <div class="pricing-tax">税込 &yen;602,800</div>
+          <div class="pricing-spec">
+            <div class="pricing-spec-title">PC スペック</div>
+            <div class="pricing-spec-item"><span>CPU</span><span>AMD AI Max+ 395</span></div>
+            <div class="pricing-spec-item"><span>統合メモリ</span><span>128GB LPDDR5X</span></div>
+            <div class="pricing-spec-item"><span>ストレージ</span><span>2TB NVMe SSD</span></div>
+            <div class="pricing-spec-item"><span>推論速度</span><span>~52 tokens/sec</span></div>
+          </div>
+          <ul class="pricing-features">
+            <li><span class="check">&#x2713;</span>スタンダードプランの全機能</li>
+            <li><span class="check">&#x2713;</span>GPT-OSS 120B ローカル動作</li>
+            <li><span class="check">&#x2713;</span>最高クラスのAI推論性能</li>
+            <li><span class="check">&#x2713;</span>大規模データ処理に対応</li>
+            <li><span class="check">&#x2713;</span>優先サポート（90日間）</li>
+          </ul>
+          <a href="#register" class="pricing-btn pricing-btn-secondary">事前登録する</a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section id="flow">
+    <div class="container">
+      <span class="section-label">How it works</span>
+      <h2 class="section-title">ご利用の流れ</h2>
+      <p class="section-desc">お申し込みから最短5営業日でお届けします。</p>
+      <div class="flow-steps">
+        <div class="flow-step">
+          <div class="flow-step-num">1</div>
+          <h3>事前登録</h3>
+          <p>メールアドレスとご希望のプランを入力するだけ。1分で完了します。</p>
+        </div>
+        <div class="flow-step">
+          <div class="flow-step-num">2</div>
+          <h3>ヒアリング</h3>
+          <p>担当者からご連絡。利用目的や環境をお聞きし、最適な構成をご提案します。</p>
+        </div>
+        <div class="flow-step">
+          <div class="flow-step-num">3</div>
+          <h3>セットアップ</h3>
+          <p>PCを仕入れ、プロがAI環境を構築。動作確認まで徹底的に行います。</p>
+        </div>
+        <div class="flow-step">
+          <div class="flow-step-num">4</div>
+          <h3>お届け</h3>
+          <p>電源を入れるだけで使えるAI PCが届きます。操作マニュアルも付属。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- USE CASES -->
+  <section class="problem" id="usecases">
+    <div class="container">
+      <span class="section-label">Use Cases</span>
+      <h2 class="section-title">こんな方に選ばれています</h2>
+      <div class="usecases-grid">
+        <div class="usecase-card">
+          <div class="usecase-persona">
+            <div class="usecase-avatar">&#x1F468;&#x200D;&#x1F4BC;</div>
+            <div>
+              <div class="usecase-name">中小企業の代表</div>
+              <div class="usecase-role">製造業 / 従業員15名</div>
+            </div>
+          </div>
+          <blockquote>「AIを導入したいけど、IT担当がいない。セットアップ済みで届くのは本当に助かる。社員に渡してすぐ使わせられた。」</blockquote>
+        </div>
+        <div class="usecase-card">
+          <div class="usecase-persona">
+            <div class="usecase-avatar">&#x1F469;&#x200D;&#x1F4BB;</div>
+            <div>
+              <div class="usecase-name">DX推進担当者</div>
+              <div class="usecase-role">サービス業 / 従業員50名</div>
+            </div>
+          </div>
+          <blockquote>「クラウドAIは情報漏洩が心配だった。ローカルで動くなら社外秘の資料も安心して処理できる。稟議も通しやすかった。」</blockquote>
+        </div>
+        <div class="usecase-card">
+          <div class="usecase-persona">
+            <div class="usecase-avatar">&#x1F474;</div>
+            <div>
+              <div class="usecase-name">会社役員</div>
+              <div class="usecase-role">不動産業 / 従業員8名</div>
+            </div>
+          </div>
+          <blockquote>「パソコンは苦手だけど、AIで議事録や契約書を作れると聞いて。届いたPCで本当にすぐ使えて驚いた。」</blockquote>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="faq" id="faq">
+    <div class="container">
+      <span class="section-label">FAQ</span>
+      <h2 class="section-title">よくあるご質問</h2>
+      <div class="faq-list">
+        <div class="faq-item">
+          <button class="faq-question">OpenClawとは何ですか？</button>
+          <div class="faq-answer">
+            <p>OpenClawは、PCを自動操作できるAIエージェント環境です。文書作成、データ分析、メール処理など、日常のPC作業をAIに任せることができます。専用のPC環境にインストールすることで、最大限のパフォーマンスを発揮します。</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question">インターネット接続は必要ですか？</button>
+          <div class="faq-answer">
+            <p>ライトプランはクラウドAPI接続のためインターネットが必要です。スタンダード・プレミアムプランはローカルLLMを搭載しているため、オフラインでもAI推論が可能です。ただし、AIモデルのアップデート時にはインターネット接続が必要です。</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question">届いた後のサポートはありますか？</button>
+          <div class="faq-answer">
+            <p>はい。プランに応じて30日〜90日間のサポートが付属します。使い方のご質問やトラブル対応をメール・オンラインでサポートいたします。サポート期間終了後も、有償での延長サポートをご用意しています。</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question">会社の経費で購入できますか？</button>
+          <div class="faq-answer">
+            <p>はい。法人名義での請求書発行に対応しています。銀行振込（法人向け）もご利用いただけます。IT導入補助金等の活用についてもご相談ください。</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question">セットアップ済みPCの納期はどれくらいですか？</button>
+          <div class="faq-answer">
+            <p>事前登録後のヒアリングを経て、通常5〜10営業日でお届けいたします。在庫状況により前後する場合がございます。お急ぎの場合はご相談ください。</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question">社外秘のデータを扱っても安全ですか？</button>
+          <div class="faq-answer">
+            <p>スタンダード・プレミアムプランはAIモデルがPC本体上で動作するため、データが外部サーバーに送信されることはありません。機密情報、個人情報を含むデータも安心してお使いいただけます。</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- REGISTER -->
+  <section class="register" id="register">
+    <div class="container">
+      <div class="register-box">
+        <span class="section-label">Pre-Registration</span>
+        <h2>まずは事前登録から</h2>
+        <p>
+          サービス開始時に優先的にご案内いたします。<br>
+          事前登録は無料です。登録後の購入義務はありません。
+        </p>
+        <form class="register-form" id="registerForm" name="preregister" method="POST" data-netlify="true">
+          <div class="form-row">
+            <input type="text" class="form-input" name="company" placeholder="会社名" required>
+            <input type="text" class="form-input" name="name" placeholder="お名前" required>
+          </div>
+          <input type="email" class="form-input" name="email" placeholder="メールアドレス" required>
+          <select class="form-select" name="plan">
+            <option value="" disabled selected>ご興味のあるプラン</option>
+            <option value="light">ライトプラン（&yen;168,000〜）</option>
+            <option value="standard">スタンダードプラン（&yen;348,000〜）</option>
+            <option value="premium">プレミアムプラン（&yen;548,000〜）</option>
+            <option value="undecided">まだ決めていない</option>
+          </select>
+          <button type="submit" class="form-submit">事前登録する（無料）</button>
+          <p class="form-note">※ ご登録いただいた情報は、サービスのご案内以外には使用いたしません。</p>
+        </form>
+        <div class="form-success" id="formSuccess">
+          <h3>ご登録ありがとうございます</h3>
+          <p>サービス開始時に優先的にご案内いたします。<br>ご登録のメールアドレスに確認メールをお送りしました。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-copy">&copy; 2026 START AI. All rights reserved.</div>
+      <div class="footer-links">
+        <a href="#">特定商取引法に基づく表記</a>
+        <a href="#">プライバシーポリシー</a>
+        <a href="#">お問い合わせ</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // FAQ accordion
+    document.querySelectorAll('.faq-question').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const item = btn.parentElement;
+        const isActive = item.classList.contains('active');
+        document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('active'));
+        if (!isActive) item.classList.add('active');
+      });
+    });
+
+    // Form submission
+    document.getElementById('registerForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const form = this;
+      const formData = new FormData(form);
+      fetch('/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: new URLSearchParams(formData).toString()
+      }).then(() => {
+        form.style.display = 'none';
+        document.getElementById('formSuccess').style.display = 'block';
+      }).catch(() => {
+        alert('送信に失敗しました。お手数ですが、もう一度お試しください。');
+      });
+    });
+
+    // Smooth scroll for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    });
+
+    // Header scroll effect
+    window.addEventListener('scroll', () => {
+      const header = document.querySelector('.header');
+      if (window.scrollY > 50) {
+        header.style.background = 'rgba(10, 15, 28, 0.95)';
+      } else {
+        header.style.background = 'rgba(10, 15, 28, 0.85)';
+      }
+    });
+  </script>
+
+</body>
+</html>
